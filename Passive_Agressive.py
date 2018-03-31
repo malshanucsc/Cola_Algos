@@ -47,8 +47,8 @@ def pA_Training(loop,input_vector,output_vector,C):
 
             if(loss_t>0):
                 Tau_t=PA(C,loss_t,x_t);
-                Tau_t1=PA1(C,loss_t,x_t);
-                Tau_t2=PA2(C,loss_t,x_t);
+                #Tau_t1=PA1(C,loss_t,x_t);
+                #Tau_t2=PA2(C,loss_t,x_t);
                 #print Tau_t," , ",Tau_t1," , ",Tau_t2
                
                 
