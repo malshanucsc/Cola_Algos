@@ -7,9 +7,25 @@ def NN(m1,m2,w1,w2,b):
 def sigmoid(x):
     return 1/(1+numpy.exp(-x))
 
+
+def cost(b):
+    return (b-4)**2
+
+def num_slope(b):
+    h=0.0001 #step size
+    return (cost(b+h)-cost(b))/h
+
+def slope(b):
+    return 2*(b-4)
+
+
+
 w1 = numpy.random.randn()
 w2 = numpy.random.randn()
 b = numpy.random.randn()
+
+
+
     
 output=NN(3,1.5,w1,w2,b)
 
