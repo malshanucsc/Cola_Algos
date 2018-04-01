@@ -55,7 +55,7 @@ def pA_Training(loop,input_vector,output_vector,C):
             loss_t=max(0,1-signed_t);
 
             if(loss_t>0):
-                Tau_t=PA2(C,loss_t,x_t);
+                Tau_t=PA1(C,loss_t,x_t);
                 #Tau_t=PA1(C,loss_t,x_t);
                 #Tau_t=PA2(C,loss_t,x_t);
                 #print Tau_t," , ",Tau_t1," , ",Tau_t2
@@ -104,7 +104,7 @@ def pA_Testing(w,input_vector,output_vector):
         loss_t=max(0,1-signed_t);
         #print
         #print (signed_t," : ",y_t)
-        if(loss_t==0):
+        if(signed_t>=0):
             correct_cal+=1
         else:
             wrong_cal+=1
@@ -138,7 +138,7 @@ with open('data.csv','rb') as data:
             
                 Y_train.append(1);
         i+=1;"""
-        if(i>233):
+        if(i<=466):
             X_train.append(row[1:10]);
             if(row[10]=="2"):
                 Y_train.append(-1);
