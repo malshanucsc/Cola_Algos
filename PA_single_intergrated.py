@@ -87,6 +87,8 @@ with open('breast_cancer_data.csv','rb') as data:
 
 
     num_loop = 10
+    #num_loop=1
+    #num_loop=2
     C = 1
 
     w, res = PA_single(input_train, output_train, C, num_loop)
