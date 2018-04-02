@@ -37,6 +37,8 @@ def pA_Training(loop,input_vector,output_vector,C):
         for j in range(0 , len(X)):
             
             x_t=X[j];
+            #print x_t
+            
             y_t=Y[j];
             
 
@@ -44,6 +46,7 @@ def pA_Training(loop,input_vector,output_vector,C):
             
             
             x_array = np.array(x_t);
+            
             #x_t=x_t/np.linalg.norm(x_array);
             
             x_t=normalize(x_array[:,np.newaxis], axis=0).ravel()
@@ -55,7 +58,7 @@ def pA_Training(loop,input_vector,output_vector,C):
             loss_t=max(0,1-signed_t);
 
             if(loss_t>0):
-                Tau_t=PA1(C,loss_t,x_t);
+                Tau_t=PA2(C,loss_t,x_t);
                 #Tau_t=PA1(C,loss_t,x_t);
                 #Tau_t=PA2(C,loss_t,x_t);
                 #print Tau_t," , ",Tau_t1," , ",Tau_t2
@@ -90,7 +93,9 @@ def pA_Testing(w,input_vector,output_vector):
 
     for i in range(loop):
         x_t=X[i];
+
         y_t=Y[i];
+        
 
         x_t = map(lambda x: float(x),x_t)
 
@@ -109,7 +114,7 @@ def pA_Testing(w,input_vector,output_vector):
         else:
             wrong_cal+=1
             
-    print(correct_cal, ":", wrong_cal   ) ;
+    print(correct_cal, ":", wrong_cal," Accuracy : ",(float(correct_cal)/233.0)*100,"%") ;
     
 with open('data.csv','rb') as data:
     reader = csv.reader(data)
@@ -121,8 +126,15 @@ with open('data.csv','rb') as data:
     Y_test=[]
     i=1;
     for row in reader:
-        
-        if(i<=466):
+        """if(i%3==0):
+            X_test.append(row[1:10]);
+            if(row[10]=="2"):
+                Y_test.append(-1);
+            
+            elif(row[10]=="4"):
+            
+                Y_test.append(1);
+        else:
             X_train.append(row[1:10]);
             if(row[10]=="2"):
                 Y_train.append(-1);
@@ -130,13 +142,24 @@ with open('data.csv','rb') as data:
             elif(row[10]=="4"):
             
                 Y_train.append(1);
-        else:
+        i+=1;"""
+        if(i<=699):
+            X_train.append(row[1:10]);
+            if(row[10]=="2"):
+                Y_train.append(-1);
+            
+            elif(row[10]=="4"):
+            
+                Y_train.append(1);
+        if(i>466):
              X_test.append(row[1:10]);
              if(row[10]=="2"):
                  Y_test.append(-1);
              elif(row[10]=="4"):
                  Y_test.append(1);
         i+=1
+
+        
             
             
      
