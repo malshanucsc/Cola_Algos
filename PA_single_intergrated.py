@@ -51,7 +51,8 @@ def PA_Single_test(X, label,w):
         else:
             inaccu+=1
                
-    print "accurate : ",accu," Inaccurate : ",inaccu; 
+    print "accurate : ",accu," Inaccurate : ",inaccu;
+    print "accuracy : ",(float(accu)/233.0)*100,"%";
     
     
 with open('breast_cancer_data.csv','rb') as data:
